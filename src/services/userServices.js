@@ -24,7 +24,7 @@ exports.getUserByID = async (userID) => {
 
 exports.createUser = async (email, username, password) => {
     try {
-        const query = 'INSERT INTO store.users (email, username, password) VALUES ($1, $2, $3)';
+        const query = 'INSERT INTO store.users (email, username, password) VALUES ($1, $2, $3);';
         const values = [email, username, password];
         await db.query(query, values);
         console.log('User created successfully');

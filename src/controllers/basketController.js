@@ -58,7 +58,9 @@ exports.removeItem = (req, res) => {
 }
 
 exports.clear = (req, res) => {
-    basketService.clear(req.body.user_id).then(() => {
+    const { user_id } = req.params
+    console.log(user_id)
+    basketService.clear(user_id).then(() => {
         console.log('Basket cleared successfully')
         res.sendStatus(202)
     }).catch((error) => {

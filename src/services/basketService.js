@@ -65,8 +65,9 @@ exports.removeItem = async (user_id, product) => {
 }
 
 exports.clear = async (user_id) => {
+    console.log(user_id)
     try {
-        const query = `UPDATE store.baskets SET products = ARRAY_REMOVE(products) WHERE user_id = $1;`
+        const query = `UPDATE store.baskets SET products = '{}'::jsonb[] WHERE user_id = $1;`
         const values = [user_id]
         await db.query(query, values)
         console.log("Basket cleared successfully")
@@ -74,4 +75,6 @@ exports.clear = async (user_id) => {
         throw new Error("Error clearing basket")
     }
 }
+
+
 

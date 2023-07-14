@@ -2,6 +2,7 @@ const orderService = require('../services/orderService');
 
 exports.getOrdersByID = (req, res) => {
     const { user_id } = req.params
+
     orderService.getOrdersByID(user_id)
         .then((orders) => {
             res.json(orders)
