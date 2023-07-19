@@ -2,7 +2,7 @@ const db = require("../database/db");
 
 exports.getBaskets = async () => {
   try {
-    const query = "SELECT * FROM gl_store.baskets";
+    const query = "SELECT * FROM gl_store.baskets;";
     const result = await db.query(query);
     return result.rows;
   } catch (error) {
@@ -12,7 +12,7 @@ exports.getBaskets = async () => {
 
 exports.getBasketByUser = async (user_id) => {
   try {
-    const query = "SELECT * FROM gl_store.baskets WHERE user_id = $1";
+    const query = "SELECT * FROM gl_store.baskets WHERE user_id = $1;";
     const values = [user_id];
     const result = await db.query(query, values);
     return result.rows;

@@ -22,3 +22,15 @@ exports.createAddress = async (user_id, house_num, postcode, street_name, town) 
     throw new Error("Error creating address");
   }
 };
+
+exports.removeAddress = async (address_id) => {
+  console.log(address_id)
+  try {
+    const query = `DELETE FROM gl_store.address WHERE address_id = $1;`;
+    const values = [address_id];
+    await db.query(query, values);
+    console.log("Address removed successfully");
+  } catch (error) {
+    throw new Error("Error removing address");
+  }
+};

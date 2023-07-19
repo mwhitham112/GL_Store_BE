@@ -19,7 +19,8 @@ exports.newOrder = (req, res) => {
     const totalPrice = req.body.totalPrice
     const products = req.body.basketString
     const date = req.body.date
-    orderService.newOrder(user_id, order_id, products, totalPrice, date)
+    const address = req.body.address
+    orderService.newOrder(user_id, order_id, products, totalPrice, date, address)
         .then(() => {
             console.log("Order created successfully")
             res.sendStatus(201)

@@ -11,11 +11,10 @@ exports.getOrdersByID = async (user_id) => {
   }
 };
 
-exports.newOrder = async (user_id, order_id, products, totalPrice, date) => {
-  console.log(typeof user_id, typeof order_id, typeof products, typeof totalPrice, typeof date);
+exports.newOrder = async (user_id, order_id, products, totalPrice, date, address) => {
   try {
-    const query = `INSERT INTO gl_store.orders(user_id, order_id, products, totalprice, date) VALUES ($1, $2, $3, $4, $5);`;
-    const values = [user_id, order_id, products, totalPrice, date];
+    const query = `INSERT INTO gl_store.orders(user_id, order_id, products, totalprice, date, address) VALUES ($1, $2, $3, $4, $5, $6);`;
+    const values = [user_id, order_id, products, totalPrice, date, address];
     await db.query(query, values);
     console.log("order created successfully");
   } catch (error) {

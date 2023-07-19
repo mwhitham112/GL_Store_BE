@@ -4,5 +4,6 @@ const addressController = require("../controllers/addressController.js");
 
 router.get("/:user_id", addressController.getAddress);
 router.post("/newaddress", addressController.createAddress);
+router.delete("/removeaddress", addressController.removeAddress)
 
 module.exports = router;

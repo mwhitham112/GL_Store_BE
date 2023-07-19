@@ -29,3 +29,13 @@ exports.createAddress = (req, res) => {
       res.status(500).send("Error getting wishlist");
     });
 };
+
+exports.removeAddress = (req, res) => {
+  addressService.removeAddress(req.body.address_id).then(() => {
+    console.log('Address removed successfully')
+    res.sendStatus(202)
+}).catch((error) => {
+    console.error("Error removing address:", error)
+    res.status(500).send('Error removing address')
+})
+}
